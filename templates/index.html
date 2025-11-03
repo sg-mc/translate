@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音声文字起こしサービス</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>音声文字起こしサービス</h1>
+            <p class="subtitle">音声ファイルをアップロードして自動的に文字起こしします</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="file-info">
+                    <p><strong>対応形式:</strong> MP3, M4A, WAV</p>
+                    <p><strong>最大サイズ:</strong> 100MB</p>
+                </div>
+
+                <form id="uploadForm">
+                    <div class="file-input-wrapper">
+                        <input type="file" id="audioFile" accept=".mp3,.m4a,.wav" required>
+                        <label for="audioFile" class="file-label">
+                            <span id="fileName">ファイルを選択</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="submit-btn">
+                        文字起こしを開始
+                    </button>
+                </form>
+
+                <div id="progressSection" class="progress-section hidden">
+                    <div class="spinner"></div>
+                    <p>処理中です。しばらくお待ちください...</p>
+                </div>
+            </div>
+
+            <div id="resultSection" class="result-section hidden">
+                <h2>文字起こし結果</h2>
+                <div class="result-meta">
+                    <p><strong>ファイル名:</strong> <span id="resultFilename"></span></p>
+                </div>
+                <div class="result-content">
+                    <textarea id="resultText" readonly></textarea>
+                </div>
+                <div class="result-actions">
+                    <button id="copyBtn" class="action-btn">テキストをコピー</button>
+                    <button id="downloadBtn" class="action-btn">テキストをダウンロード</button>
+                    <button id="newTranscriptionBtn" class="action-btn secondary">新しい文字起こし</button>
+                </div>
+            </div>
+
+            <div id="errorSection" class="error-section hidden">
+                <h3>エラーが発生しました</h3>
+                <p id="errorMessage"></p>
+                <button id="retryBtn" class="action-btn">もう一度試す</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by OpenAI Whisper</p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
