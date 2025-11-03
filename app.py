@@ -14,7 +14,7 @@ MAX_FILE_SIZE = 100 * 1024 * 1024  # 100MB
 
 # Whisperモデルをロード（起動時に1回だけ）
 print("Whisperモデルをロード中...")
-model = whisper.load_model("base")  # base, small, medium, large から選択可能
+model = whisper.load_model("medium")  # base, small, medium, large から選択可能
 print("Whisperモデルのロード完了")
 
 def allowed_file(filename):
